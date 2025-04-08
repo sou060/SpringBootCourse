@@ -4,11 +4,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- Define a bean for a service class -->
-<bean class="com.java.service.JavaCourse"/>
-    <bean class="com.java.service.Telusko"/>
-    <bean class="com.java.service.SpringBootCourse"/>
-    <bean class="com.java.service.DevOpsCourse"/>
+    <!-- Define course beans -->
+    <bean id="javaCourse" class="com.java.service.JavaCourse"/>
+    <bean id="springBootCourse" class="com.java.service.SpringBootCourse"/>
+    <bean id="devOpsCourse" class="com.java.service.DevOpsCourse"/>
 
+    <!-- Define Telusko bean with dependency injection -->
+    <bean id="telusko" class="com.java.service.Telusko">
+        <property name="course" ref="javaCourse"/>
+    </bean>
 
 </beans>
